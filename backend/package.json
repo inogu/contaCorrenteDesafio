@@ -1,0 +1,19 @@
+{
+  "name": "conta-corrente-bancaria-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Gustavo Inocencio",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.7",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.2.4"
+  }
+}
