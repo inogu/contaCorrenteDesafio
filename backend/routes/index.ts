@@ -1,11 +1,21 @@
 import { ITransaction } from "../types/ITransaction";
 
-const connectDatabase = require("../util/database");
-const getAllTransactions = require("../util/database");
-const insertTransaction = require("../util/database");
+import express from "express";
 
-const express = require("express");
+import {
+  connectDatabase,
+  getAllTransactions,
+  insertTransaction,
+} from "../util/database";
+
 const router = express.Router();
+
+router.get(
+  "/",
+  (request: any, response: { json: (arg0: { message: string }) => any }) => {
+    return response.json({ message: "Hello, TypeScript!" });
+  }
+);
 
 router.get("/extrato", async (req, res, next) => {
   let client;
@@ -13,7 +23,9 @@ router.get("/extrato", async (req, res, next) => {
   try {
     client = await connectDatabase();
   } catch (error) {
-    res.status(500).json({ message: "Connecting to the database failed!" });
+    res.status(500).json({
+      message: "Connecting to the database failed!" + error.message,
+    });
     return;
   }
 
@@ -53,4 +65,4 @@ router.post("/insertTransaction", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;
