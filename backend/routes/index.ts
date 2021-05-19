@@ -10,13 +10,6 @@ import {
 
 const router = express.Router();
 
-router.get(
-  "/",
-  (request: any, response: { json: (arg0: { message: string }) => any }) => {
-    return response.json({ message: "Hello, TypeScript!" });
-  }
-);
-
 router.get("/extrato", async (req, res, next) => {
   let client;
 
@@ -41,6 +34,7 @@ router.get("/extrato", async (req, res, next) => {
 
 router.post("/insertTransaction", async (req, res, next) => {
   const transaction: ITransaction = req.body;
+  transaction.datetime = new Date();
   let client;
 
   try {
