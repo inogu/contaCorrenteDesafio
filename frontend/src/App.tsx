@@ -1,13 +1,7 @@
 import React from "react";
 import "./App.css";
-import Layout from "./components/layout/layout";
+import Routes from "./Routes";
 
-function App(props: any) {
-  return (
-    <div className="App">
-      <Layout>Teste</Layout>
-    </div>
-  );
-}
+const App = () => <Routes />;
 
 export default App;

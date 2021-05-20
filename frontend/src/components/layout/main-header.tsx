@@ -1,11 +1,6 @@
 import { Header } from "../../styles/styled";
 import Button from "../ui/button";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import Extrato from "../../pages/Extrato";
 import Deposito from "../../pages/Deposito";
 import Pagamento from "../../pages/Pagamento";
@@ -45,21 +40,6 @@ const MainHeader = () => {
         >
           Resgate
         </Button>
-
-        <Switch>
-          <Route exact path="/extrato">
-            <Extrato />
-          </Route>
-          <Route path="/deposito">
-            <Deposito />
-          </Route>
-          <Route path="/pagamento">
-            <Pagamento />
-          </Route>
-          <Route path="/resgate">
-            <Resgate />
-          </Route>
-        </Switch>
       </Header>
     </Router>
   );

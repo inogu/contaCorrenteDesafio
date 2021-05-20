@@ -1,9 +1,9 @@
 import Layout from "../components/layout/layout";
 
-const Resgate = () => (
+const Home = () => (
   <Layout>
-    <h1>Resgate</h1>
+    <h1>Home</h1>
   </Layout>
 );
 
-export default Resgate;
+export default Home;
