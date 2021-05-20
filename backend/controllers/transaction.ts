@@ -5,6 +5,19 @@ import {
   insertTransaction,
 } from "../util/database";
 
+const createDateAsUTC = (date: Date) => {
+  return new Date(
+    Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()
+    )
+  );
+};
+
 exports.extrato = async (
   req: any,
   res: {
@@ -55,7 +68,8 @@ exports.insertTransaction = async (
   next: any
 ) => {
   const transaction: ITransaction = req.body;
-  transaction.datetime = new Date();
+  transaction.datetime = createDateAsUTC(new Date());
+
   let client;
 
   try {
@@ -68,6 +82,17 @@ exports.insertTransaction = async (
   let result;
 
   try {
+    switch (transaction.type) {
+      case 2:
+      case 3:
+        if (!transaction.destinyAccount)
+          res.status(500).json({ message: "Conta de destino não informada!" });
+
+        break;
+
+      default:
+        break;
+    }
     result = await insertTransaction(client, "transactions", transaction);
     transaction._id = result.insertedId;
     res
