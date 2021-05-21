@@ -67,9 +67,10 @@ function Resgate() {
           type: TipoTransacao.Resgate,
           datetime: createDateAsUTC(new Date()),
           destinyAccount: values.enteredContaDestino,
-          value: parseFloat(
-            values.enteredValor.replace("R$ ", "").replace(",", ".")
-          ),
+          value:
+            parseFloat(
+              values.enteredValor.replace("R$ ", "").replace(",", ".")
+            ) * -1,
         });
         setRequestStatus("success");
         setAlertSuccessVisible(true);

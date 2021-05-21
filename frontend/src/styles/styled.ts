@@ -22,6 +22,13 @@ export const FormContainer = styled.div`
   width: 40%;
 `;
 
+export const GridContainer = styled.div`
+  background-color: #aaa;
+  height: 700px;
+  margin: auto;
+  width: 51%;
+`;
+
 export const Title = styled.h1`
   font-size: 5em;
   color: black;
