@@ -2,7 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import routes from "./routes/index";
 
-const app = express();
+var cors = require("cors");
+var app = express();
+
+app.use(cors());
 
 app.use(bodyParser.json());
 

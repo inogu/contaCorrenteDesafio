@@ -7,7 +7,7 @@ const StyledButton = styled.button<ButtonComponentProps>`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid black;
   border-radius: 6px;
   width: 20em;
   height: 3em;
@@ -18,11 +18,7 @@ export type ButtonComponentProps = {
   onClick: (e?: React.MouseEvent) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({
-  onClick,
-  children,
-  ...otherProps
-}: ButtonComponentProps) => {
+const Button = ({ onClick, children, ...otherProps }: ButtonComponentProps) => {
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
