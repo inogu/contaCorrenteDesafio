@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import InfoAlert from "../components/ui/messageInfo";
 import ErrorAlert from "../components/ui/messageError";
 import NumberFormat from "react-number-format";
+import { TipoTransacao } from "../enums/TipoTransacao";
 
 interface State {
   enteredCodigoBarras: string;
@@ -63,7 +64,7 @@ function Pagamento() {
     } else {
       try {
         await sendTransactionData({
-          type: 2,
+          type: TipoTransacao.Pagamento,
           datetime: createDateAsUTC(new Date()),
           destinyAccount: values.enteredCodigoBarras,
           value: parseFloat(
