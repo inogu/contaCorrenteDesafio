@@ -6,12 +6,12 @@ export const Header = styled.header`
   padding: 3rem 10%;
   margin-right: 2rem
   height: 5rem;
-  background-image: linear-gradient(to right, black , red);
+  background-image: linear-gradient(to right, black, #ccc);
   background-size: cover;
 `;
 
 export const Container = styled.div`
-  background-image: linear-gradient(to right, black, red);
+  background-image: linear-gradient(to right, black, #ccc);
   height: 700px;
 `;
 
@@ -24,7 +24,7 @@ export const FormContainer = styled.div`
 
 export const GridContainer = styled.div`
   background-color: #aaa;
-  height: 700px;
+  height: 80%;
   margin: auto;
   width: 51%;
 `;
