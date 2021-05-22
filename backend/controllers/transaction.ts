@@ -1,9 +1,13 @@
+import { TipoTransacao } from "../enums/TipoTransacao";
 import { ITransaction } from "../types/ITransaction";
 import {
   connectDatabase,
   getAllTransactions,
+  getTransactionsByDate,
   insertTransaction,
 } from "../util/database";
+
+const taxaSelicDiaria = 0.000092;
 
 const createDateAsUTC = (date: Date) => {
   return new Date(
@@ -16,6 +20,57 @@ const createDateAsUTC = (date: Date) => {
       date.getSeconds()
     )
   );
+};
+
+exports.buscaRendimentoDia = async () => {
+  let client;
+
+  try {
+    client = await connectDatabase();
+  } catch (error) {
+    throw new Error(error);
+  }
+
+  try {
+    const documents = await getTransactionsByDate(client, "transactions");
+    return documents;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+exports.inserirRendimento = async () => {
+  let client;
+
+  try {
+    client = await connectDatabase();
+  } catch (error) {
+    throw new Error(error);
+  }
+
+  try {
+    const transactions = await getAllTransactions(client, "transactions", {
+      _id: -1,
+    });
+
+    let valorSaldo = transactions.reduce(function (
+      prev: number,
+      cur: ITransaction
+    ) {
+      return prev + cur.value;
+    },
+    0);
+
+    const result = await insertTransaction(client, "transactions", {
+      type: 5,
+      datetime: createDateAsUTC(new Date()),
+      destinyAccount: "",
+      value: valorSaldo * taxaSelicDiaria,
+    });
+    return result;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 exports.extrato = async (
@@ -82,22 +137,18 @@ exports.insertTransaction = async (
   let result;
 
   try {
-    switch (transaction.type) {
-      case 2:
-      case 3:
-        if (!transaction.destinyAccount)
-          res.status(500).json({ message: "Conta de destino não informada!" });
-
-        break;
-
-      default:
-        break;
+    if (
+      (transaction.type === TipoTransacao.Pagamento ||
+        transaction.type === TipoTransacao.Resgate) &&
+      !transaction.destinyAccount
+    ) {
+      res.status(500).json({ message: "Conta de destino não informada!" });
+    } else {
+      result = await insertTransaction(client, "transactions", transaction);
+      res
+        .status(201)
+        .json({ message: "Transação inserida", transaction: transaction });
     }
-    result = await insertTransaction(client, "transactions", transaction);
-    transaction._id = result.insertedId;
-    res
-      .status(201)
-      .json({ message: "Transação inserida", transaction: transaction });
   } catch (error) {
     res
       .status(500)

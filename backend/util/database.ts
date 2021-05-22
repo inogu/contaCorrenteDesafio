@@ -1,4 +1,5 @@
 import { ITransaction } from "../types/ITransaction";
+import { TipoTransacao } from "../enums/TipoTransacao";
 
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
@@ -31,6 +32,29 @@ export async function getAllTransactions(
   const db = client.db();
 
   const documents = await db.collection(collection).find().sort(sort).toArray();
+
+  return documents;
+}
+
+export async function getTransactionsByDate(
+  client: { db: () => any },
+  collection: string
+) {
+  const db = client.db();
+
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+  var tomorrow = new Date();
+  tomorrow.setDate(new Date().getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+
+  const documents = await db
+    .collection(collection)
+    .find({
+      datetime: { $gte: today, $lt: tomorrow },
+      type: TipoTransacao.Rendimento,
+    })
+    .toArray();
 
   return documents;
 }
