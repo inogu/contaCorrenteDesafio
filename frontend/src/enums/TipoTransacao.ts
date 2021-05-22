@@ -3,4 +3,5 @@ export enum TipoTransacao {
   Pagamento = 2,
   Resgate = 3,
   Saldo = 4,
+  Rendimento = 5,
 }

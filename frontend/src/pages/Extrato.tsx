@@ -47,6 +47,8 @@ function Extrato() {
                   ? "Pagamento"
                   : t.type === TipoTransacao.Resgate
                   ? "Resgate"
+                  : t.type === TipoTransacao.Rendimento
+                  ? "Rendimento"
                   : "Saldo atual",
               value: "R$ " + t.value.toLocaleString("pt-BR"),
               datetime: new Date(t.datetime).toLocaleString("pt-BR"),

@@ -1,3 +1,5 @@
+import { TipoTransacao } from "../enums/TipoTransacao";
+
 var mongodb = require("mongodb");
 
 var MongoClient = mongodb.MongoClient;
@@ -11,7 +13,7 @@ describe("Pagamento", function () {
   it("deve validar pagamento sem conta destino", async (done) => {
     const req = {
       body: {
-        type: 2,
+        type: TipoTransacao.Pagamento,
         destinyAccount: "",
         value: 205,
       },
@@ -41,7 +43,7 @@ describe("Pagamento", function () {
   it("deve criar um pagamento sem decimais", async () => {
     const req = {
       body: {
-        type: 2,
+        type: TipoTransacao.Pagamento,
         destinyAccount: "conta225",
         value: 100,
       },
@@ -67,7 +69,7 @@ describe("Pagamento", function () {
   it("deve criar um pagamento com decimais", async () => {
     const req = {
       body: {
-        type: 2,
+        type: TipoTransacao.Pagamento,
         destinyAccount: "conta145",
         value: 305.52,
       },

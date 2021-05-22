@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use("/", routes);
 
-cron.schedule("50 * * * *", () => {
+cron.schedule("0 * * * *", () => {
   console.log("Iniciando rendimentos da conta! " + new Date());
   rentabilizarConta();
   console.log("Conta rentabilizada!");

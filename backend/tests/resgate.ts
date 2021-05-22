@@ -1,3 +1,5 @@
+import { TipoTransacao } from "../enums/TipoTransacao";
+
 var mongodb = require("mongodb");
 
 var MongoClient = mongodb.MongoClient;
@@ -11,7 +13,7 @@ describe("Resgate", function () {
   it("deve validar resgate sem conta destino", async (done) => {
     const req = {
       body: {
-        type: 3,
+        type: TipoTransacao.Resgate,
         destinyAccount: "",
         value: 205,
       },
@@ -41,7 +43,7 @@ describe("Resgate", function () {
   it("deve criar um resgate sem decimais", async () => {
     const req = {
       body: {
-        type: 3,
+        type: TipoTransacao.Resgate,
         destinyAccount: "conta1",
         value: 100,
       },
@@ -67,7 +69,7 @@ describe("Resgate", function () {
   it("deve criar um resgate com decimais", async () => {
     const req = {
       body: {
-        type: 3,
+        type: TipoTransacao.Resgate,
         destinyAccount: "conta2",
         value: 305.52,
       },

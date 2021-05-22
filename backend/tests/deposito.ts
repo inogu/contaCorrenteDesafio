@@ -1,3 +1,5 @@
+import { TipoTransacao } from "../enums/TipoTransacao";
+
 var mongodb = require("mongodb");
 
 var MongoClient = mongodb.MongoClient;
@@ -11,7 +13,7 @@ describe("Deposito", function () {
   it("deve criar um deposito", async () => {
     const req = {
       body: {
-        type: 1,
+        type: TipoTransacao.Deposito,
         destinyAccount: "",
         value: 1005,
       },
@@ -37,7 +39,7 @@ describe("Deposito", function () {
   it("deve criar um deposito com decimais", async () => {
     const req = {
       body: {
-        type: 1,
+        type: TipoTransacao.Deposito,
         destinyAccount: "",
         value: 185.64,
       },
