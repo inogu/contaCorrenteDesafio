@@ -50,7 +50,13 @@ function Extrato() {
                   : t.type === TipoTransacao.Rendimento
                   ? "Rendimento"
                   : "Saldo atual",
-              value: "R$ " + t.value.toLocaleString("pt-BR"),
+              value:
+                "R$ " +
+                t.value.toLocaleString("pt-BR", {
+                  style: "decimal",
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                }),
               datetime: new Date(t.datetime).toLocaleString("pt-BR"),
               id: t._id,
             })
