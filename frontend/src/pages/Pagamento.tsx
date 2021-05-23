@@ -39,19 +39,6 @@ function Pagamento() {
     }
   }, [requestStatus]);
 
-  const createDateAsUTC = (date: Date) => {
-    return new Date(
-      Date.UTC(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds()
-      )
-    );
-  };
-
   const insertPagamento = async () => {
     setRequestStatus("pending");
 
@@ -65,7 +52,7 @@ function Pagamento() {
       try {
         await sendTransactionData({
           type: TipoTransacao.Pagamento,
-          datetime: createDateAsUTC(new Date()),
+          datetime: new Date(),
           destinyAccount: values.enteredCodigoBarras,
           value:
             parseFloat(

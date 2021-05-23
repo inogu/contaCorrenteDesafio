@@ -37,19 +37,6 @@ function Deposito() {
     }
   }, [requestStatus]);
 
-  const createDateAsUTC = (date: Date) => {
-    return new Date(
-      Date.UTC(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds()
-      )
-    );
-  };
-
   const insertDeposito = async () => {
     setRequestStatus("pending");
 
@@ -60,7 +47,7 @@ function Deposito() {
       try {
         await sendTransactionData({
           type: TipoTransacao.Deposito,
-          datetime: createDateAsUTC(new Date()),
+          datetime: new Date(),
           destinyAccount: "",
           value: parseFloat(
             values.enteredValor.replace("R$ ", "").replace(",", ".")

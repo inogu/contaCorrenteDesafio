@@ -9,19 +9,6 @@ import {
 
 const taxaSelicDiaria = 0.000092;
 
-const createDateAsUTC = (date: Date) => {
-  return new Date(
-    Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds()
-    )
-  );
-};
-
 exports.buscaRendimentoDia = async () => {
   let client;
 
@@ -63,7 +50,7 @@ exports.inserirRendimento = async () => {
 
     const result = await insertTransaction(client, "transactions", {
       type: 5,
-      datetime: createDateAsUTC(new Date()),
+      datetime: new Date(),
       destinyAccount: "",
       value: valorSaldo * taxaSelicDiaria,
     });
@@ -123,7 +110,7 @@ exports.insertTransaction = async (
   next: any
 ) => {
   const transaction: ITransaction = req.body;
-  transaction.datetime = createDateAsUTC(new Date());
+  if (!transaction.datetime) transaction.datetime = new Date();
 
   let client;
 

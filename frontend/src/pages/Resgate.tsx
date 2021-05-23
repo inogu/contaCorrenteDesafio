@@ -39,19 +39,6 @@ function Resgate() {
     }
   }, [requestStatus]);
 
-  const createDateAsUTC = (date: Date) => {
-    return new Date(
-      Date.UTC(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds()
-      )
-    );
-  };
-
   const insertResgate = async () => {
     setRequestStatus("pending");
 
@@ -65,7 +52,7 @@ function Resgate() {
       try {
         await sendTransactionData({
           type: TipoTransacao.Resgate,
-          datetime: createDateAsUTC(new Date()),
+          datetime: new Date(),
           destinyAccount: values.enteredContaDestino,
           value:
             parseFloat(

@@ -12,12 +12,12 @@ export const Header = styled.header`
 
 export const Container = styled.div`
   background-image: linear-gradient(to right, black, #ccc);
-  height: 700px;
+  height: 600px;
 `;
 
 export const FormContainer = styled.div`
   background-color: #aaa;
-  height: 700px;
+  height: 600px;
   margin: auto;
   width: 40%;
 `;
