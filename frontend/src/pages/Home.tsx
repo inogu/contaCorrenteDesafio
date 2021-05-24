@@ -5,7 +5,9 @@ function Home() {
   return (
     <Layout>
       <S.Container>
-        <S.Title>Conta corrente bancária</S.Title>
+        <S.Title>
+          Bem-vindo <br /> Banco Gustavo
+        </S.Title>
       </S.Container>
     </Layout>
   );
