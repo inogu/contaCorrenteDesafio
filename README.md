@@ -51,6 +51,7 @@ Também existe uma funcionalidade automática de rendimento, onde diariamente é
 * [jest](https://jestjs.io/pt-BR/) e [react-testing-library](https://testing-library.com/)-> componentes para criação e execução de testes unitários<br/>
 * [axios](https://github.com/axios/axios) -> componente utilizado para consumir APIs, no caso as APIs do backend, mas poderia também ser utilizado para APIs externas.<br/>
 * [styled-components](https://styled-components.com/) -> Lib utilizada para que o desenvolvedor tenha uma maneira mais fácil de lidar com CSS nos componentes de aplicações React utilizando CSS-in-JS<br/>
+* [react-icons](https://react-icons.github.io/react-icons) -> Utilizada para incluir icones nos botões
 
 
 <a name="execucao"/>

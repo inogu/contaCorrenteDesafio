@@ -1,6 +1,8 @@
 import { Header } from "../../styles/styled";
-import Button from "../ui/button";
+import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
+import { FaFileAlt } from "react-icons/fa";
 
 const MainHeader = () => {
   let history = useHistory();
@@ -9,6 +11,9 @@ const MainHeader = () => {
     <Router>
       <Header>
         <Button
+          variant="contained"
+          color="default"
+          startIcon={<FaFileAlt />}
           onClick={() => {
             history.push("/extrato");
           }}
@@ -16,6 +21,9 @@ const MainHeader = () => {
           Extrato
         </Button>
         <Button
+          variant="contained"
+          color="default"
+          startIcon={<GiPayMoney />}
           onClick={() => {
             history.push("/deposito");
           }}
@@ -23,6 +31,9 @@ const MainHeader = () => {
           Depósito
         </Button>
         <Button
+          variant="contained"
+          color="default"
+          startIcon={<GiTakeMyMoney />}
           onClick={() => {
             history.push("/pagamento");
           }}
@@ -30,6 +41,9 @@ const MainHeader = () => {
           Pagamento
         </Button>
         <Button
+          variant="contained"
+          color="default"
+          startIcon={<GiReceiveMoney />}
           onClick={() => {
             history.push("/resgate");
           }}

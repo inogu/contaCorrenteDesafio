@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;  
   padding: 3rem 10%;
   margin-right: 2rem
   height: 5rem;
   background-image: linear-gradient(to right, black, #ccc);
   background-size: cover;
+  
 `;
 
 export const Container = styled.div`
