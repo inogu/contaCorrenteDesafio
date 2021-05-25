@@ -6,7 +6,7 @@ const MongoClient = mongodb.MongoClient;
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(
-    "mongodb+srv://inogu:KV7PbrVJDEsofnPs@cluster0.v5gnb.mongodb.net/desafioWarren?retryWrites=true&w=majority"
+    "mongodb+srv://@user:@password@cluster0.v5gnb.mongodb.net/desafioWarren?retryWrites=true&w=majority"
   );
 
   return client;

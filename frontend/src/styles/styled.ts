@@ -20,14 +20,14 @@ export const FormContainer = styled.div`
   background-color: #aaa;
   height: 600px;
   margin: auto;
-  width: 40%;
+  width: 50%;
 `;
 
 export const GridContainer = styled.div`
   background-color: #aaa;
   height: 80%;
   margin: auto;
-  width: 51%;
+  width: 65%;
 `;
 
 export const Title = styled.h1`
